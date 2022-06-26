@@ -15,9 +15,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: backgroundColor,
-      ),
+      // theme: ThemeData.dark().copyWith(
+      //   scaffoldBackgroundColor: backgroundColor,
+      // ),
       home: LoginScreen(),
     );
   }
