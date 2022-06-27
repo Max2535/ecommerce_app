@@ -36,7 +36,7 @@ class SingUpScreen extends StatelessWidget {
               TextFormField(
                 decoration: InputDecoration(
                   filled: true,
-                  hintText: 'Enter your fullname',
+                  hintText: 'Enter your full name',
                   border: OutlineInputBorder(
                     borderSide: BorderSide.none,
                   ),

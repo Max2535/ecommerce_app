@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "277281921218",
+    "project_id": "ecommerce-cours-7a70d",
+    "storage_bucket": "ecommerce-cours-7a70d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:277281921218:android:8e53f1b53cd7772619435b",
+        "android_client_info": {
+          "package_name": "com.suppchai.ecommerce_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "277281921218-d2cti2s19n225mru5beopnu0c4pjhug5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXTHwGO-v_qq0Y4c6s3DbuGLzVRXGHeGE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "277281921218-d2cti2s19n225mru5beopnu0c4pjhug5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
