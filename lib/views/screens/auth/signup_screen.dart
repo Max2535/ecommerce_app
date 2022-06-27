@@ -1,11 +1,14 @@
 import 'package:ecommerce_app/const.dart';
+import 'package:ecommerce_app/controllers/auth_controller.dart';
 import 'package:ecommerce_app/views/screens/auth/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class SingUpScreen extends StatelessWidget {
-  const SingUpScreen({Key? key}) : super(key: key);
-
+  final TextEditingController _fullNameController = TextEditingController();
+  final TextEditingController _userNameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,6 +37,7 @@ class SingUpScreen extends StatelessWidget {
                 height: 20,
               ),
               TextFormField(
+                controller: _fullNameController,
                 decoration: InputDecoration(
                   filled: true,
                   hintText: 'Enter your full name',
@@ -51,6 +55,7 @@ class SingUpScreen extends StatelessWidget {
                 height: 20,
               ),
               TextFormField(
+                controller: _userNameController,
                 decoration: InputDecoration(
                   filled: true,
                   hintText: 'Enter your username',
@@ -68,6 +73,7 @@ class SingUpScreen extends StatelessWidget {
                 height: 20,
               ),
               TextFormField(
+                controller: _emailController,
                 decoration: InputDecoration(
                   filled: true,
                   hintText: 'Enter your email',
@@ -85,6 +91,7 @@ class SingUpScreen extends StatelessWidget {
                 height: 20,
               ),
               TextFormField(
+                controller: _passwordController,
                 decoration: InputDecoration(
                   filled: true,
                   hintText: 'Enter your password',
@@ -107,23 +114,33 @@ class SingUpScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: buttonColor,
                 ),
-                child: Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.add),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        'Register',
-                        style: TextStyle(
-                          color: textButtonColor,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 24,
+                child: InkWell(
+                  onTap: () async {
+                    await AuthController().singUpUser(
+                      _userNameController.text,
+                      _userNameController.text,
+                      _emailController.text,
+                      _passwordController.text,
+                    );
+                  },
+                  child: Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.add),
+                        SizedBox(
+                          width: 10,
                         ),
-                      ),
-                    ],
+                        Text(
+                          'Register',
+                          style: TextStyle(
+                            color: textButtonColor,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 24,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
