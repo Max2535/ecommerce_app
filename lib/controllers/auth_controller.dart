@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommerce_app/const.dart';
+import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class AuthController {
@@ -63,6 +64,14 @@ _uploadImageToStorage(Uint8List? image) async {
 
   var uploadTask = ref.putData(image!);
   var snap = await uploadTask;
-  var downloadUrl = snap.ref.getDownloadURL();
+  var downloadUrl = await snap.ref.getDownloadURL();
   return downloadUrl;
+}
+
+showSnackBar(String content, BuildContext context) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text(content),
+    ),
+  );
 }

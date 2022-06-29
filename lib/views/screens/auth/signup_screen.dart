@@ -25,6 +25,8 @@ class _SingUpScreenState extends State<SingUpScreen> {
 
   Uint8List? _image;
 
+  bool _isLoading = false;
+
   void _toggle() {
     setState(() {
       _obscureText = !_obscureText;
@@ -36,6 +38,28 @@ class _SingUpScreenState extends State<SingUpScreen> {
     setState(() {
       _image = image;
     });
+  }
+
+  signUpUser() async {
+    setState(() {
+      _isLoading = true;
+    });
+    var res = await AuthController().singUpUser(
+      _userNameController.text,
+      _userNameController.text,
+      _emailController.text,
+      _passwordController.text,
+      _image!,
+    );
+    setState(() {
+      _isLoading = false;
+    });
+    if (res != "success") {
+      return showSnackBar(res, context);
+    } else {
+      return showSnackBar(
+          'Congratulations account has been created for you', context);
+    }
   }
 
   @override
@@ -212,12 +236,14 @@ class _SingUpScreenState extends State<SingUpScreen> {
                 ),
                 child: InkWell(
                   onTap: () async {
-                    await AuthController().singUpUser(
-                        _userNameController.text,
-                        _userNameController.text,
-                        _emailController.text,
-                        _passwordController.text,
-                        _image!);
+                    await signUpUser();
+                    _userNameController.clear();
+                    _userNameController.clear();
+                    _emailController.clear();
+                    _passwordController.clear();
+                    setState(() {
+                      _image = null;
+                    });
                   },
                   child: Center(
                     child: Row(
@@ -227,14 +253,20 @@ class _SingUpScreenState extends State<SingUpScreen> {
                         SizedBox(
                           width: 10,
                         ),
-                        Text(
-                          'Register',
-                          style: TextStyle(
-                            color: textButtonColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 24,
-                          ),
-                        ),
+                        _isLoading
+                            ? Center(
+                                child: CircularProgressIndicator(
+                                  color: Colors.white,
+                                ),
+                              )
+                            : Text(
+                                'Register',
+                                style: TextStyle(
+                                  color: textButtonColor,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 24,
+                                ),
+                              ),
                       ],
                     ),
                   ),
