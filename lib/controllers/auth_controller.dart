@@ -53,6 +53,26 @@ class AuthController {
     }
     return res;
   }
+
+  //function to login in users
+
+  loginUsers(String email, String password) async {
+    String res = 'some error occured';
+    try {
+      if (email.isNotEmpty && password.isNotEmpty) {
+        await firebaseAuth.signInWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
+        res = 'success';
+        print('you are now logged in');
+      } else {
+        res = 'please fields must not be empty';
+      }
+    } catch (e) {
+      res = e.toString();
+    }
+  }
 }
 
 //function to add image to store

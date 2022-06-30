@@ -141,6 +141,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
               TextFormField(
                 textInputAction: TextInputAction.next,
                 controller: _emailController,
+                keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   filled: true,
                   icon: Icon(Icons.email_outlined),
@@ -158,41 +159,6 @@ class _SingUpScreenState extends State<SingUpScreen> {
               SizedBox(
                 height: 20,
               ),
-              // Column(
-              //   children: [
-              //     TextFormField(
-              //       obscureText: _obscureText,
-              //       enableSuggestions: false,
-              //       autocorrect: false,
-              //       textInputAction: TextInputAction.done,
-              //       controller: _passwordController,
-              //       decoration: InputDecoration(
-              //         filled: true,
-              //         icon: const Padding(
-              //             padding: const EdgeInsets.only(top: 15.0),
-              //             child: const Icon(Icons.lock)),
-              //         hintText: 'Enter your password',
-              //         border: OutlineInputBorder(
-              //           borderSide: BorderSide.none,
-              //         ),
-              //         focusedBorder: OutlineInputBorder(
-              //           borderSide: BorderSide(
-              //             color: Colors.black,
-              //           ),
-              //         ),
-              //       ),
-              //     ),
-              //     GestureDetector(
-              //       onTap: _toggle,
-              //       child: Icon(
-              //         _obscureText
-              //             ? Icons.visibility_off_rounded
-              //             : Icons.visibility_rounded,
-              //         size: 24,
-              //       ),
-              //     ),
-              //   ],
-              // ),
               TextField(
                 controller: _passwordController,
                 textInputAction: TextInputAction.done,
@@ -241,8 +207,9 @@ class _SingUpScreenState extends State<SingUpScreen> {
                     _userNameController.clear();
                     _emailController.clear();
                     _passwordController.clear();
+                    _image!.clear();
                     setState(() {
-                      _image = null;
+                      _isLoading = false;
                     });
                   },
                   child: Center(
