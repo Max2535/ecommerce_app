@@ -44,6 +44,12 @@ class _SingUpScreenState extends State<SingUpScreen> {
     setState(() {
       _isLoading = true;
     });
+    if (_image == null) {
+      setState(() {
+        _isLoading = false;
+      });
+      return;
+    }
     var res = await AuthController().singUpUser(
       _userNameController.text,
       _userNameController.text,
@@ -103,11 +109,11 @@ class _SingUpScreenState extends State<SingUpScreen> {
                 controller: _fullNameController,
                 decoration: InputDecoration(
                   filled: true,
-                  icon: Icon(Icons.person),
                   hintText: 'Enter your full name',
                   border: OutlineInputBorder(
                     borderSide: BorderSide.none,
                   ),
+                  prefixIcon: Icon(Icons.account_circle_rounded, size: 24),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
                       color: Colors.black,
@@ -123,11 +129,11 @@ class _SingUpScreenState extends State<SingUpScreen> {
                 controller: _userNameController,
                 decoration: InputDecoration(
                   filled: true,
-                  icon: Icon(Icons.person_sharp),
                   hintText: 'Enter your username',
                   border: OutlineInputBorder(
                     borderSide: BorderSide.none,
                   ),
+                  prefixIcon: Icon(Icons.person_sharp, size: 24),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
                       color: Colors.black,
@@ -144,11 +150,11 @@ class _SingUpScreenState extends State<SingUpScreen> {
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   filled: true,
-                  icon: Icon(Icons.email_outlined),
                   hintText: 'Enter your email',
                   border: OutlineInputBorder(
                     borderSide: BorderSide.none,
                   ),
+                  prefixIcon: Icon(Icons.email, size: 24),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
                       color: Colors.black,
@@ -203,12 +209,12 @@ class _SingUpScreenState extends State<SingUpScreen> {
                 child: InkWell(
                   onTap: () async {
                     await signUpUser();
-                    _userNameController.clear();
+                    _fullNameController.clear();
                     _userNameController.clear();
                     _emailController.clear();
                     _passwordController.clear();
-                    _image!.clear();
                     setState(() {
+                      _image = null;
                       _isLoading = false;
                     });
                   },

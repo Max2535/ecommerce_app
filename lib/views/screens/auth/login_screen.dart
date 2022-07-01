@@ -1,5 +1,7 @@
 import 'package:ecommerce_app/const.dart';
 import 'package:ecommerce_app/controllers/auth_controller.dart';
+import 'package:ecommerce_app/views/screens/auth/forget_password.dart';
+import 'package:ecommerce_app/views/screens/bottom_navbar.dart';
 import 'package:ecommerce_app/views/screens/auth/signup_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -43,6 +45,11 @@ class _LoginScreenState extends State<LoginScreen> {
       return showSnackBar(res, context);
     } else {
       //Do noting for now we dont want
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (BuildContext context) => BottomNavBar(),
+        ),
+      );
     }
   }
 
@@ -54,22 +61,20 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextFormField(
-              textInputAction: TextInputAction.next,
+            TextField(
               controller: _emailController,
+              textInputAction: TextInputAction.next,
               keyboardType: TextInputType.emailAddress,
+              obscureText: false,
               decoration: InputDecoration(
-                filled: true,
-                icon: Icon(Icons.email_outlined),
-                hintText: 'Enter your email',
+                floatingLabelBehavior: FloatingLabelBehavior
+                    .never, //Hides label on focus or if filled
+                labelText: "Enter your email",
+                filled: true, // Needed for adding a fill color
                 border: OutlineInputBorder(
-                  borderSide: BorderSide.none,
+                  borderSide: BorderSide.none, // No border
                 ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Colors.black,
-                  ),
-                ),
+                prefixIcon: Icon(Icons.email, size: 24),
               ),
             ),
             SizedBox(
@@ -83,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
               decoration: InputDecoration(
                 floatingLabelBehavior: FloatingLabelBehavior
                     .never, //Hides label on focus or if filled
-                labelText: "Password",
+                labelText: 'Enter your password',
                 filled: true, // Needed for adding a fill color
                 border: OutlineInputBorder(
                   borderSide: BorderSide.none, // No border
@@ -165,6 +170,25 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ],
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            InkWell(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => ForgetPasswordScreen(),
+                  ),
+                );
+              },
+              child: Text(
+                'Forget Password ?',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                ),
+              ),
             ),
           ],
         ),
