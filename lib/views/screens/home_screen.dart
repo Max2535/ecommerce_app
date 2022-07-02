@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/views/screens/widget/category_list.dart';
 import 'package:ecommerce_app/views/screens/widget/custom_app_bar.dart';
 import 'package:ecommerce_app/views/screens/widget/serch_input.dart';
 import 'package:ecommerce_app/views/screens/widget/teg_list.dart';
@@ -13,6 +14,7 @@ class HomeScreen extends StatelessWidget {
         CustomAppBar(),
         SearchInput(),
         TagList(),
+        CategoryList(),
       ]),
     );
   }
