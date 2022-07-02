@@ -21,7 +21,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           });
         },
         currentIndex: _pageIndex,
-        activeColor: Colors.white,
+        activeColor: textButtonColor,
         inactiveColor: Colors.grey,
         backgroundColor: backgroundColor,
         items: [

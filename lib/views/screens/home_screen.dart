@@ -1,3 +1,6 @@
+import 'package:ecommerce_app/views/screens/widget/custom_app_bar.dart';
+import 'package:ecommerce_app/views/screens/widget/serch_input.dart';
+import 'package:ecommerce_app/views/screens/widget/teg_list.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -6,9 +9,11 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text('Home'),
-      ),
+      body: Column(children: [
+        CustomAppBar(),
+        SearchInput(),
+        TagList(),
+      ]),
     );
   }
 }
